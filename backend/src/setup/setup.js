@@ -12,18 +12,48 @@ async function setupApp() {
     const Admin = require('../models/coreModels/Admin');
     const AdminPassword = require('../models/coreModels/AdminPassword');
     const newAdminPassword = new AdminPassword();
+ const Setting = mongoose.model('Setting');
+  const PaymentMode = mongoose.model('PaymentMode');
+  const Taxes = mongoose.model('Taxes');
 
+  const { name, email, password, language, timezone, country, config = {} } = req.body;
+
+  // Check if an owner already exists
+  const existingOwner = await Admin.findOne({ role: 'owner' });
+  if (existingOwner) {
+    return res.status(400).json({
+      success: false,
+      result: null,
+      message: 'An owner already exists. Only one owner is allowed.',
+    });
+  }
+
+  const objectSchema = Joi.object({
+    name: Joi.string().required(),
+    email: Joi.string().email({ tlds: { allow: true } }).required(),
+    password: Joi.string().required(),
+  });
+
+  const { error, value } = objectSchema.validate({ name, email, password });
+  if (error) {
+    return res.status(409).json({
+      success: false,
+      result: null,
+      error: error,
+      message: 'Invalid/Missing credentials.',
+      errorMessage: error.message,
+    });
+  }
     const salt = uniqueId();
 
     const passwordHash = newAdminPassword.generateHash(salt, 'admin123');
 
-    const demoAdmin = {
-      email: 'admin@demo.com',
-      name: 'IDURAR',
-      surname: 'Admin',
-      enabled: true,
-      role: 'owner',
-    };
+     const accountOwnner = {
+    email,
+    name,
+    role: 'owner',
+    enabled: true, // Owner should be enabled by default
+  };
     const result = await new Admin(demoAdmin).save();
 
     const AdminPasswordData = {

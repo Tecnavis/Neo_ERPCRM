@@ -1,23 +1,23 @@
 import CrudModule from '@/modules/CrudModule/CrudModule';
 import DynamicForm from '@/forms/DynamicForm';
 import { fields } from './config';
+
 import useLanguage from '@/locale/useLanguage';
 
-export default function Customer() {
+export default function Service() {
   const translate = useLanguage();
-  const entity = 'admin';
+  const entity = 'service';
   const searchConfig = {
     displayLabels: ['name'],
     searchFields: 'name',
-    outputFilter: { role: 'employee' } // Only show employees
   };
   const deleteModalLabels = ['name'];
 
   const Labels = {
-    PANEL_TITLE: translate('manager'),
-    DATATABLE_TITLE: translate('manager'),
-    ADD_NEW_ENTITY: translate('add_new_manager'),
-    ENTITY_NAME: translate('manager'),
+    PANEL_TITLE: translate('service'),
+    DATATABLE_TITLE: translate('service_list'),
+    ADD_NEW_ENTITY: translate('add_new_service'),
+    ENTITY_NAME: translate('service'),
   };
   const configPage = {
     entity,

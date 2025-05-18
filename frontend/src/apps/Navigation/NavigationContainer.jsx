@@ -26,6 +26,13 @@ import {
   FilterOutlined,
   WalletOutlined,
   ReconciliationOutlined,
+  BranchesOutlined,
+  LeftSquareOutlined,
+  LayoutOutlined,
+  MacCommandOutlined,
+  MergeOutlined,
+  ManOutlined,
+  PartitionOutlined,
 } from '@ant-design/icons';
 
 const { Sider } = Layout;
@@ -55,11 +62,32 @@ function Sidebar({ collapsible, isMobile = false }) {
       label: <Link to={'/'}>{translate('dashboard')}</Link>,
     },
     {
-      key: 'customer',
-      icon: <CustomerServiceOutlined />,
-      label: <Link to={'/customer'}>{translate('customers')}</Link>,
+      key: 'admin',
+      icon: <UserOutlined  />,
+      label: <Link to={'/admin'}>{translate('admins')}</Link>,
     },
-
+      {
+      key: 'customer',
+      icon: <LayoutOutlined />,
+      label: <Link to={'/customer'}>{translate('Manager Creation')}</Link>,
+    },
+      {
+      key: 'manager',
+      icon: <PartitionOutlined/>,
+      label: <Link to={'/manager'}>{translate('Manager')}</Link>,
+    },
+     {
+      key: 'branch',
+      icon: <BranchesOutlined  />,
+      label: <Link to={'/branch'}>{translate('branchs')}</Link>,
+    },
+     {
+      key: 'service',
+      icon: <TagsOutlined  />,
+      label: <Link to={'/service'}>{translate('services')}</Link>,
+    },
+  
+  
     {
       key: 'invoice',
       icon: <ContainerOutlined />,

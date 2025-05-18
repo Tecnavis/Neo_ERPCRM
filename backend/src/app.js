@@ -9,6 +9,9 @@ const coreAuthRouter = require('./routes/coreRoutes/coreAuth');
 const coreApiRouter = require('./routes/coreRoutes/coreApi');
 const coreDownloadRouter = require('./routes/coreRoutes/coreDownloadRouter');
 const corePublicRouter = require('./routes/coreRoutes/corePublicRouter');
+const coreSetupRouter = require('./routes/coreRoutes/coreSetup'); // Add this line
+const adminManagementRouter = require('./routes/adminManagement'); // Add this line
+
 const adminAuth = require('./controllers/coreControllers/adminAuth');
 
 const errorHandlers = require('./handlers/errorHandlers');
@@ -35,6 +38,8 @@ app.use(compression());
 // app.use(fileUpload());
 
 // Here our API Routes
+app.use('/api', coreSetupRouter); // Add this line
+app.use('/api', adminManagementRouter); // Add this line
 
 app.use('/api', coreAuthRouter);
 app.use('/api', adminAuth.isValidAuthToken, coreApiRouter);

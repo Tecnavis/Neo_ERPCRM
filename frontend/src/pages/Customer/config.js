@@ -1,18 +1,17 @@
+// frontend config
 export const fields = {
   name: {
     type: 'string',
-  },
-  country: {
-    type: 'country',
-    // color: 'red',
-  },
-  address: {
-    type: 'string',
-  },
-  phone: {
-    type: 'phone',
+    required: true,
   },
   email: {
     type: 'email',
+    required: true,
   },
+  password: {
+    type: 'password',
+    required: true,
+    minLength: 6,
+  },
+
 };

@@ -24,7 +24,7 @@ const summary = async (Model, req, res) => {
   const pipeline = [
     {
       $facet: {
-        totalAdmins: [
+        totalBranchs: [
           {
             $match: {
               removed: false,
@@ -35,7 +35,7 @@ const summary = async (Model, req, res) => {
             $count: 'count',
           },
         ],
-        newAdmins: [
+        newBranchs: [
           {
             $match: {
               removed: false,
@@ -47,12 +47,12 @@ const summary = async (Model, req, res) => {
             $count: 'count',
           },
         ],
-        activeAdmins: [
+        activeBranchs: [
           {
             $lookup: {
               from: InvoiceModel.collection.name,
-              localField: '_id', // Match _id from AdminModel
-              foreignField: 'admin', // Match Admin field in InvoiceModel
+              localField: '_id', // Match _id from ClientModel
+              foreignField: 'branch', // Match client field in InvoiceModel
               as: 'invoice',
             },
           },
@@ -77,20 +77,20 @@ const summary = async (Model, req, res) => {
   const aggregationResult = await Model.aggregate(pipeline);
 
   const result = aggregationResult[0];
-  const totalAdmins = result.totalAdmins[0] ? result.totalAdmins[0].count : 0;
-  const totalNewAdmins = result.newAdmins[0] ? result.newAdmins[0].count : 0;
-  const activeAdmins = result.activeAdmins[0] ? result.activeAdmins[0].count : 0;
+  const totalBranchs = result.totalBranchs[0] ? result.totalBranchs[0].count : 0;
+  const totalNewBranchs = result.newBranchs[0] ? result.newBranchs[0].count : 0;
+  const activeBranchs = result.activeBranchs[0] ? result.activeBranchs[0].count : 0;
 
-  const totalActiveAdminsPercentage = totalAdmins > 0 ? (activeAdmins / totalAdmins) * 100 : 0;
-  const totalNewAdminsPercentage = totalAdmins > 0 ? (totalNewAdmins / totalAdmins) * 100 : 0;
+  const totalActiveBranchsPercentage = totalBranchs > 0 ? (activeBranchs / totalBranchs) * 100 : 0;
+  const totalNewBranchsPercentage = totalBranchs > 0 ? (totalNewBranchs / totalBranchs) * 100 : 0;
 
   return res.status(200).json({
     success: true,
     result: {
-      new: Math.round(totalNewAdminsPercentage),
-      active: Math.round(totalActiveAdminsPercentage),
+      new: Math.round(totalNewBranchsPercentage),
+      active: Math.round(totalActiveBranchsPercentage),
     },
-    message: 'Successfully get summary of new Admins',
+    message: 'Successfully get summary of new branchs',
   });
 };
 

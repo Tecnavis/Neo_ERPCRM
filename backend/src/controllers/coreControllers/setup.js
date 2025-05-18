@@ -3,7 +3,7 @@ require('dotenv').config({ path: '.env.local' });
 const { globSync } = require('glob');
 const fs = require('fs');
 const { generate: uniqueId } = require('shortid');
-
+const Joi = require('joi');
 const mongoose = require('mongoose');
 
 const setup = async (req, res) => {
@@ -98,4 +98,6 @@ const setup = async (req, res) => {
   });
 };
 
-module.exports = setup;
+module.exports = {
+  setup
+};

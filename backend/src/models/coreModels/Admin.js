@@ -23,14 +23,22 @@ const adminSchema = new Schema({
     type: String,
     trim: true,
   },
+    country: String,
+
   created: {
     type: Date,
     default: Date.now,
   },
-  role: {
+  // role: {
+  //   type: String,
+  //   default: 'owner',
+  //   enum: ['owner'],
+  // },
+ role: {
     type: String,
-    default: 'owner',
-    enum: ['owner'],
+    enum: ['owner', 'admin', 'branch_manager', 'employee'],
+    default: 'admin',
+      required: true
   },
 });
 

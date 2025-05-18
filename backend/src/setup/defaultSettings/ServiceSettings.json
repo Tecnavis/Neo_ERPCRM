@@ -1,0 +1,56 @@
+[
+{
+"settingCategory": "service_settings",
+"settingKey": "VAT_enabled",
+"settingValue": "true",
+"valueType": "boolean"
+},
+{
+"settingCategory": "service_settings",
+"settingKey": "VAT_percentage",
+"settingValue": "5",
+"valueType": "number"
+},
+{
+"settingCategory": "service_settings",
+"settingKey": "FTA_enabled",
+"settingValue": "true",
+"valueType": "boolean"
+},
+{
+"settingCategory": "service_settings",
+"settingKey": "FTA_contact_email",
+"settingValue": "fta@example.com",
+"valueType": "string"
+},
+{
+"settingCategory": "service_settings",
+"settingKey": "CT_enabled",
+"settingValue": "false",
+"valueType": "boolean"
+},
+{
+"settingCategory": "service_settings",
+"settingKey": "CT_notes",
+"settingValue": "Corporate Tax not applicable",
+"valueType": "string"
+},
+{
+"settingCategory": "service_settings",
+"settingKey": "ERP_enabled",
+"settingValue": "true",
+"valueType": "boolean"
+},
+{
+"settingCategory": "service_settings",
+"settingKey": "ERP_system_name",
+"settingValue": "Odoo ERP",
+"valueType": "string"
+},
+{
+"settingCategory": "service_settings",
+"settingKey": "ERP_api_url",
+"settingValue": "https://erp.example.com/api",
+"valueType": "string"
+}
+]

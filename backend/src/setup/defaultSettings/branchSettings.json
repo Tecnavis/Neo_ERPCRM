@@ -1,0 +1,50 @@
+[
+{
+"settingCategory": "branch_settings",
+"settingKey": "branch_name",
+"settingValue": "Main Branch",
+"valueType": "string"
+},
+{
+"settingCategory": "branch_settings",
+"settingKey": "branch_code",
+"settingValue": "BR001",
+"valueType": "string"
+},
+{
+"settingCategory": "branch_settings",
+"settingKey": "branch_manager",
+"settingValue": "John Doe",
+"valueType": "string"
+},
+{
+"settingCategory": "branch_settings",
+"settingKey": "branch_address",
+"settingValue": "123 Branch Street, City",
+"valueType": "string"
+},
+{
+"settingCategory": "branch_settings",
+"settingKey": "branch_phone",
+"settingValue": "+1 234 567 890",
+"valueType": "string"
+},
+{
+"settingCategory": "branch_settings",
+"settingKey": "branch_email",
+"settingValue": "branch@example.com",
+"valueType": "string"
+},
+{
+"settingCategory": "branch_settings",
+"settingKey": "branch_opening_hours",
+"settingValue": "Mon-Fri 9am-6pm",
+"valueType": "string"
+},
+{
+"settingCategory": "branch_settings",
+"settingKey": "branch_logo",
+"settingValue": "public/uploads/setting/branch-logo.png",
+"valueType": "image"
+}
+]

@@ -16,6 +16,7 @@ export const login =
         isLoggedIn: true,
         isLoading: false,
         isSuccess: true,
+         role: data.result.role,
       };
       window.localStorage.setItem('auth', JSON.stringify(auth_state));
       window.localStorage.removeItem('isLogout');

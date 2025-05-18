@@ -7,6 +7,11 @@ const NotFound = lazy(() => import('@/pages/NotFound.jsx'));
 
 const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const Customer = lazy(() => import('@/pages/Customer'));
+const Admin = lazy(() => import('@/pages/Admin'));
+const Service = lazy(() => import('@/pages/Service'));
+const Branch = lazy(() => import('@/pages/Branchs'));
+const Manager = lazy(() => import('@/pages/Manager'));
+
 const Invoice = lazy(() => import('@/pages/Invoice'));
 const InvoiceCreate = lazy(() => import('@/pages/Invoice/InvoiceCreate'));
 
@@ -52,7 +57,22 @@ let routes = {
       path: '/customer',
       element: <Customer />,
     },
-
+      {
+      path: '/manager',
+      element: <Manager />,
+    },
+{
+      path: '/admin',
+      element: <Admin />,
+    },
+    {
+      path: '/branch',
+      element: <Branch/>,
+    },
+    {
+      path: '/service',
+      element: <Service />,
+    },
     {
       path: '/invoice',
       element: <Invoice />,
