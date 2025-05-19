@@ -5,33 +5,34 @@ import useLanguage from '@/locale/useLanguage';
 
 export default function Manager() {
   const translate = useLanguage();
-  const entity = 'manager';
-  
+  const entity = 'admin';
   const searchConfig = {
-    displayLabels: ['name', 'branch.name'],
-    searchFields: 'name,branch.name',
+    displayLabels: ['name'],
+    searchFields: 'name',
+    outputFilter: { role: 'branch_manager' } // Only show employees
   };
+  
+  const deleteModalLabels = ['name'];
 
-  const config = {
+  const Labels = {
+    PANEL_TITLE: translate('manager'),
+    DATATABLE_TITLE: translate('manager'),
+    ADD_NEW_ENTITY: translate('add_new_manager'),
+    ENTITY_NAME: translate('manager'),
+  };
+  const configPage = {
     entity,
+    ...Labels,
+  };
+  const config = {
+    ...configPage,
     fields,
     searchConfig,
-    // Add these to show related data in table
-    tableColumns: [
-      { title: translate('Name'), dataIndex: 'name' },
-      { 
-        title: translate('Branch'), 
-        dataIndex: ['branch', 'name'],
-        render: (branch) => branch?.name || 'N/A'
-      },
-      {
-        title: translate('Services'),
-        dataIndex: 'services',
-        render: (services) => services?.map(s => s.name).join(', ') || 'N/A'
-      }
-    ]
+    deleteModalLabels,
+      filterFields: {
+    role: 'branch_manager', // 👈 This line enforces the filter on all data fetches
+  }
   };
-
   return (
     <CrudModule
       createForm={<DynamicForm fields={fields} />}

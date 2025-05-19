@@ -56,7 +56,7 @@ exports.createAdmin = async (req, res) => {
       country,
       address,
     
-      role: 'employee',
+      role: 'branch_manager',
       enabled: true
     }).save();
 
@@ -94,3 +94,23 @@ exports.createAdmin = async (req, res) => {
     });
   }
 };
+// --------------------------
+exports.getAdmins = async (req, res) => {
+  try {
+    const Admin = mongoose.model('Admin');
+
+    const admins = await Admin.find({ role: 'branch_manager', removed: false }); // ✅ filter here
+    return res.status(200).json({
+      success: true,
+      result: admins,
+      message: 'Admins fetched successfully'
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      success: false,
+      message: 'Server error'
+    });
+  }
+};
+

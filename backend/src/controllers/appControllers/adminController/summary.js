@@ -24,7 +24,7 @@ const summary = async (Model, req, res) => {
   const pipeline = [
     {
       $facet: {
-        totalClients: [
+        totalAdmins: [
           {
             $match: {
               removed: false,
@@ -35,7 +35,7 @@ const summary = async (Model, req, res) => {
             $count: 'count',
           },
         ],
-        newClients: [
+        newAdmins: [
           {
             $match: {
               removed: false,
@@ -47,12 +47,12 @@ const summary = async (Model, req, res) => {
             $count: 'count',
           },
         ],
-        activeClients: [
+        activeAdmins: [
           {
             $lookup: {
               from: InvoiceModel.collection.name,
               localField: '_id', // Match _id from ClientModel
-              foreignField: 'client', // Match client field in InvoiceModel
+              foreignField: 'admin', // Match client field in InvoiceModel
               as: 'invoice',
             },
           },
@@ -77,20 +77,20 @@ const summary = async (Model, req, res) => {
   const aggregationResult = await Model.aggregate(pipeline);
 
   const result = aggregationResult[0];
-  const totalClients = result.totalClients[0] ? result.totalClients[0].count : 0;
-  const totalNewClients = result.newClients[0] ? result.newClients[0].count : 0;
-  const activeClients = result.activeClients[0] ? result.activeClients[0].count : 0;
+  const totalAdmins = result.totalAdmins[0] ? result.totalAdmins[0].count : 0;
+  const totalNewAdmins = result.newAdmins[0] ? result.newAdmins[0].count : 0;
+  const activeAdmins = result.activeAdmins[0] ? result.activeAdmins[0].count : 0;
 
-  const totalActiveClientsPercentage = totalClients > 0 ? (activeClients / totalClients) * 100 : 0;
-  const totalNewClientsPercentage = totalClients > 0 ? (totalNewClients / totalClients) * 100 : 0;
+  const totalActiveAdminsPercentage = totalAdmins > 0 ? (activeAdmins / totalAdmins) * 100 : 0;
+  const totalNewAdminsPercentage = totalAdmins > 0 ? (totalNewAdmins / totalAdmins) * 100 : 0;
 
   return res.status(200).json({
     success: true,
     result: {
-      new: Math.round(totalNewClientsPercentage),
-      active: Math.round(totalActiveClientsPercentage),
+      new: Math.round(totalNewAdminsPercentage),
+      active: Math.round(totalActiveAdminsPercentage),
     },
-    message: 'Successfully get summary of new clients',
+    message: 'Successfully get summary of new Admins',
   });
 };
 

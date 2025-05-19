@@ -1,5 +1,5 @@
 import { Space, Layout, Divider, Typography } from 'antd';
-import logo from '@/style/images/idurar-crm-erp.svg';
+import logo from '@/style/images/abacus.png';
 import useLanguage from '@/locale/useLanguage';
 import { useSelector } from 'react-redux';
 
@@ -24,15 +24,15 @@ export default function SideContent() {
           src={logo}
           alt="IDURAR ERP CRM"
           style={{ margin: '0 0 40px', display: 'block' }}
-          height={63}
-          width={220}
+          height={93}
+          width={240}
         />
 
-        <Title level={1} style={{ fontSize: 28 }}>
+        {/* <Title level={1} style={{ fontSize: 28 }}>
           Free Open Source ERP / CRM
-        </Title>
+        </Title> */}
         <Text>
-          Accounting / Invoicing / Quote App <b /> based on Node.js React.js Ant Design
+Abacus is smart software that helps you manage your business and customers—all in one place.
         </Text>
 
         <div className="space20"></div>

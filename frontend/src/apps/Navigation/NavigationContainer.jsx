@@ -5,7 +5,7 @@ import { Button, Drawer, Layout, Menu } from 'antd';
 import { useAppContext } from '@/context/appContext';
 
 import useLanguage from '@/locale/useLanguage';
-import logoIcon from '@/style/images/logo-icon.svg';
+import logoIcon from '@/style/images/abacus.png';
 import logoText from '@/style/images/logo-text.svg';
 
 import useResponsive from '@/hooks/useResponsive';
@@ -64,27 +64,27 @@ function Sidebar({ collapsible, isMobile = false }) {
     {
       key: 'admin',
       icon: <UserOutlined  />,
-      label: <Link to={'/admin'}>{translate('admins')}</Link>,
+      label: <Link to={'/admin'}>{translate('admin Creation')}</Link>,
     },
       {
       key: 'customer',
       icon: <LayoutOutlined />,
-      label: <Link to={'/customer'}>{translate('Manager Creation')}</Link>,
+      label: <Link to={'/customer'}>{translate('Customer Creation')}</Link>,
     },
       {
       key: 'manager',
       icon: <PartitionOutlined/>,
-      label: <Link to={'/manager'}>{translate('Manager')}</Link>,
+      label: <Link to={'/manager'}>{translate('Manager Creation')}</Link>,
     },
      {
       key: 'branch',
       icon: <BranchesOutlined  />,
-      label: <Link to={'/branch'}>{translate('branchs')}</Link>,
+      label: <Link to={'/branch'}>{translate('branch creation')}</Link>,
     },
      {
       key: 'service',
       icon: <TagsOutlined  />,
-      label: <Link to={'/service'}>{translate('services')}</Link>,
+      label: <Link to={'/service'}>{translate('service creation')}</Link>,
     },
   
   
@@ -179,9 +179,9 @@ function Sidebar({ collapsible, isMobile = false }) {
           cursor: 'pointer',
         }}
       >
-        <img src={logoIcon} alt="Logo" style={{ marginLeft: '-5px', height: '40px' }} />
+        <img src={logoIcon} alt="Logo" style={{ marginLeft: '-5px', height: '70px' }} />
 
-        {!showLogoApp && (
+        {/* {!showLogoApp && (
           <img
             src={logoText}
             alt="Logo"
@@ -191,7 +191,7 @@ function Sidebar({ collapsible, isMobile = false }) {
               height: '38px',
             }}
           />
-        )}
+        )} */}
       </div>
       <Menu
         items={items}

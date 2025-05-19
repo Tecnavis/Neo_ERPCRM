@@ -28,15 +28,8 @@ const schema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-// models/Admin.js
-role: {
-  type: String,
-  enum: ['owner', 'admin', 'branch_manager', 'employee'],
-  default: 'branch_manager',
-  required: true
-},
 });
 
 schema.plugin(require('mongoose-autopopulate'));
 
-module.exports = mongoose.model('Cient', schema);
+module.exports = mongoose.model('Client', schema);

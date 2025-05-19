@@ -4,20 +4,20 @@ export const fields = {
     type: 'string',
     required: true,
   },
-  branch: {
-    type: 'asyncSelect',
-    entity: 'branch',
+  email: {
+    type: 'email',
     required: true,
-    displayLabels: ['name'],
-    searchFields: 'name',
-    outputValue: '_id'
   },
-  services: {
-    type: 'asyncMultiSelect',
-    entity: 'service',
+  password: {
+    type: 'password',
     required: true,
-    displayLabels: ['name'],
-    searchFields: 'name',
-    outputValue: '_id'
-  }
+    minLength: 6,
+  },
+  role: {
+    type: 'hidden',
+    defaultValue: 'branch_manager', // This will automatically set the value
+    noForm: true // This prevents it from appearing in the form
+  },
+
+
 };
