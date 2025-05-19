@@ -10,5 +10,11 @@ router.post('/admin/create',
   adminAuth.isValidAuthToken,
   catchErrors(adminManagementController.createAdmin)
 );
+// routes/adminManagement.js
+router.get(
+  '/admin',
+  adminAuth.isValidAuthToken,
+  catchErrors(adminManagementController.getAdmins)
+);
 
 module.exports = router;

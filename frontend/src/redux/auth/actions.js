@@ -11,13 +11,16 @@ export const login =
     const data = await authService.login({ loginData });
 
     if (data.success === true) {
-      const auth_state = {
-        current: data.result,
-        isLoggedIn: true,
-        isLoading: false,
-        isSuccess: true,
-         role: data.result.role,
-      };
+    const auth_state = {
+  current: data.result,
+  isLoggedIn: true,
+  isLoading: false,
+  isSuccess: true,
+  role: data.result.role,
+};
+const auth = JSON.parse(localStorage.getItem('auth'));
+const role = auth?.role;
+
       window.localStorage.setItem('auth', JSON.stringify(auth_state));
       window.localStorage.removeItem('isLogout');
       dispatch({

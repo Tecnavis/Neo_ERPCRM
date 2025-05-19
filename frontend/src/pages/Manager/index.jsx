@@ -29,8 +29,13 @@ export default function Manager() {
     fields,
     searchConfig,
     deleteModalLabels,
-      filterFields: {
-    role: 'branch_manager', // 👈 This line enforces the filter on all data fetches
+     api: {
+    // when fetching the table, call GET /admin?role=branch_manager
+    list: {
+      url: '/admin',
+      method: 'get',
+      params: { role: 'branch_manager' }
+    },
   }
   };
   return (

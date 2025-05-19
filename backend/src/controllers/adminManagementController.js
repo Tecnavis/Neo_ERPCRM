@@ -113,4 +113,23 @@ exports.getAdmins = async (req, res) => {
     });
   }
 };
+// controllers/adminManagementController.js
+exports.getAdmins = async (req, res) => {
+  try {
+    const Admin = mongoose.model('Admin');
+    // build filter from query
+    const filter = { removed: false };
+    if (req.query.role) filter.role = req.query.role;
+
+    const admins = await Admin.find(filter);
+    return res.status(200).json({
+      success: true,
+      result: admins,
+      message: 'Admins fetched successfully'
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ success: false, message: 'Server error' });
+  }
+};
 
